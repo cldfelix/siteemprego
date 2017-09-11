@@ -7,7 +7,6 @@ using System.Threading.Tasks;
 
 namespace SiteEmprego.Models
 {
-    [Table("tbl_vaga")]
     public class Vaga
     {
         [Key]
@@ -22,9 +21,10 @@ namespace SiteEmprego.Models
         [Required(ErrorMessage = "Estado da vaga é um campo obrigatório!")]
         public string Estado { get; set; }
         public bool VagaAtiva { get; set; } = true;
+        public int QtdCandidados { get; set; }  = 0;
         public DateTime CriadoEm { get; set; }
-        public Usuario Usuario { get; set; }
-        public LinkedList<Candidatura> Candidaturas { get; set; }
+        public  Usuario Usuario { get; set; }
+        public virtual LinkedList<Candidatura> Candidaturas { get; set; }
 
     }
 }

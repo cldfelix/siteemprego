@@ -35,16 +35,30 @@ namespace SiteEmprego.Controllers
         [HttpGet("{id}")]
         public Usuario Get(long id)
         {
-            var ret = _context.Usuarios.Include(u => u.Vagas).Include(u => u.Candidaturas).First(u=>u.IdUsuario == id);
+            var ret = _context.Usuarios
+            .Include(u => u.Vagas)
+            .Include(u => u.Candidaturas)
+            .Include(u => u.Curriculos)
+            .First(u=>u.IdUsuario == id);
+          
             foreach (var vaga in ret.Vagas)
             {
                 vaga.Usuario = null;
+                vaga.Candidaturas = null;
+            }
+
+            foreach (var curriculo in ret.Curriculos)
+            {
+                curriculo.Usuario = null;
+                curriculo.Candidaturas = null;
             }
 
             foreach (var cand in ret.Candidaturas)
             {
                 cand.Usuario = null;
+                cand.Curriculo = null;
                 cand.Vaga = null;
+
             }
 
             return ret;

@@ -7,7 +7,6 @@ using System.Threading.Tasks;
 
 namespace SiteEmprego.Models
 {
-    [Table("tbl_usuario")]
     public class Usuario
     {
         [Key]
@@ -22,8 +21,9 @@ namespace SiteEmprego.Models
         public string Estado { get; set; }
         public DateTime CriadoEm { get; set; }
         public bool UsuarioAtivo { get; set; } = true;
-        public LinkedList<Vaga> Vagas { get; set; }
-        public LinkedList<Candidatura> Candidaturas { get; set; }
+        public virtual LinkedList<Vaga> Vagas { get; set; }
+        public virtual LinkedList<Candidatura> Candidaturas { get; set; }
+        public virtual LinkedList<Curriculo> Curriculos { get; set; }
 
     }
 }

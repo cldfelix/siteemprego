@@ -36,7 +36,10 @@ namespace SiteEmprego.Controllers
                 return BadRequest(ModelState);
             }
 
-            var vaga = await _context.Vagas.Include(m=> m.Candidaturas).Include(m=> m.Usuario).SingleOrDefaultAsync(m => m.IdVaga == id);
+            var vaga = await _context.Vagas
+            .Include(m=> m.Candidaturas)
+            .Include(m=> m.Usuario)
+            .SingleOrDefaultAsync(m => m.IdVaga == id);
 
             if (vaga == null)
             {
@@ -90,6 +93,8 @@ namespace SiteEmprego.Controllers
         [HttpPost]
         public async Task<IActionResult> PostVaga([FromBody] Vaga vaga)
         {
+            Console.WriteLine(vaga);
+
             if (!ModelState.IsValid)
             {
                 return BadRequest(ModelState);

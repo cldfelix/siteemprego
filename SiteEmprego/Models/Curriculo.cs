@@ -13,9 +13,10 @@ namespace SiteEmprego.Models
         public string Descricao { get; set; }
         public string Cidade { get; set; }
         public string Estado { get; set; }
-        public int Salario { get; set; }
+        public float Salario { get; set; }
+        public int QdtEnviados { get; set; } = 0;
         public DateTime CriadoEm { get; set; }
-        public Usuario Usuario { get; set; }
-        public List<Candidatura> Candidaturas { get; set; }
+        public virtual Usuario Usuario { get; set; }
+        public virtual LinkedList<Candidatura> Candidaturas { get; set; }
     }
 }

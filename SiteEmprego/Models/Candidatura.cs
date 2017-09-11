@@ -7,15 +7,17 @@ using System.Threading.Tasks;
 
 namespace SiteEmprego.Models
 {
-    [Table("tbl_candidatura")]
     public class Candidatura
     {
         [Key]
         public long Idcandidatura { get; set; }
-        public Vaga Vaga { get; set; }
-        public Usuario Usuario { get; set; }
-        public DateTime CriadoEm { get; set; }
-        public bool CandidaturaAtiva { get; set; } = true;
-
+        public DateTime CriadoEm { get; set; } = DateTime.Now;
+        public bool CandidaturaAtiva { get; set;} = true;
+        [Required(ErrorMessage = "Id da vaga é obrigatória!")]
+        public virtual Vaga Vaga { get; set; }
+        [Required(ErrorMessage = "Id do usuário é obrigatório!")]
+        public virtual Usuario Usuario { get; set; }
+        [Required(ErrorMessage = "Id do currículo é obrigatório!")]
+        public virtual Curriculo Curriculo { get; set; }
     }
 }

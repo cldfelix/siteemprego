@@ -36,7 +36,11 @@ namespace SiteEmprego.Controllers
                 return BadRequest(ModelState);
             }
 
-            var usuario = await _context.Usuarios.Include(m => m.Vagas).Include(m=>m.Candidaturas).SingleOrDefaultAsync(m => m.IdUsuario == id);
+            var usuario = await _context.Usuarios
+                .Include(m => m.Vagas)
+                .Include(m => m.Curriculos)
+                .Include(m => m.Candidaturas)
+                .SingleOrDefaultAsync(m => m.IdUsuario == id);
         
             if (usuario == null)
             {
