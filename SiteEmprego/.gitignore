@@ -5,6 +5,7 @@
 ## Angular ##
 # compiled output
 /dist
+/appsettings.json
 /tmp
 /app/**/*.js
 /app/**/*.js.map

@@ -45,11 +45,9 @@ namespace SiteEmprego.Controllers
             {
                 return NotFound();
             }
-
-           
-                vaga.Usuario.Vagas =  null;
-                vaga.Usuario.Candidaturas =  null;
-
+            vaga.Usuario.Vagas =  null;
+            vaga.Usuario.Candidaturas =  null;
+            vaga.Usuario.Password = null;
 
             return Ok(vaga);
         }

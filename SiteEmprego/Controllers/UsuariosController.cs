@@ -47,16 +47,27 @@ namespace SiteEmprego.Controllers
                 return NotFound();
             }
 
-                foreach (var vaga in usuario.Vagas)
+            foreach (var vaga in usuario.Vagas)
             {
                vaga.Usuario =  null;
                vaga.Candidaturas = null; 
             }
+           
 
-            foreach (var candidatura in usuario.Candidaturas)
+            foreach (var curriculo in usuario.Curriculos)
             {
-              candidatura.Usuario = null;  
+                curriculo.Usuario = null;
+                curriculo.Candidaturas = null;
             }
+
+            foreach (var cand in usuario.Candidaturas)
+            {
+                cand.Usuario = null;
+                cand.Curriculo = null;
+                cand.Vaga = null;
+
+            }
+
 
             return Ok(usuario);
         }
